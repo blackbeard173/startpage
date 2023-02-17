@@ -1,5 +1,50 @@
 ---
-const name = 'Red';
+import { Icon } from 'astro-icon';
+
+const items = [
+  {
+    id: 1,
+    name: 'Github',
+    icon: 'github',
+    pack: 'lucide',
+    link: 'https://github.com'
+  },
+  {
+    id: 2,
+    name: 'Youtube',
+    icon: 'youtube',
+    pack: 'lucide',
+    link: 'https://www.youtube.com'
+  },
+  {
+    id: 3,
+    name: 'Reddit',
+    icon: 'glasses',
+    pack: 'lucide',
+    link: 'https://reddit.com'
+  },
+  {
+    id: 4,
+    name: 'Trakt',
+    icon: 'movies-and-tv-24-regular',
+    pack: 'fluent',
+    link: 'https://trakt.tv'
+  },
+  {
+    id: 5,
+    name: 'Todoist',
+    icon: 'todoist',
+    pack: 'simple-icons',
+    link: 'https://todoist.com'
+  },
+  {
+    id: 6,
+    name: 'Mail',
+    icon: 'mail',
+    pack: 'lucide',
+    link: 'https://mail.google.com'
+  }
+];
 ---
 
 <html lang="en">
@@ -11,8 +56,30 @@ const name = 'Red';
     <title>Startpage</title>
   </head>
   <body
-    class="flex h-screen items-center justify-center bg-zinc-900 text-gray-100"
+    class="flex h-screen items-center justify-center bg-zinc-900 p-4 text-gray-300"
   >
-    <h1>Hello, {name}</h1>
+    <main>
+      <div class="grid grid-cols-3 gap-6 md:gap-12">
+        {
+          items.map((item) => (
+            <button
+              class="rounded-lg bg-zinc-800 shadow-lg outline-none outline-2"
+              title={item.name}
+            >
+              <a
+                href={item.link}
+                class="flex items-center justify-center p-8 md:p-16"
+              >
+                <Icon
+                  pack={item.pack}
+                  name={item.icon}
+                  class="h-6 w-6 md:h-10 md:w-10"
+                />
+              </a>
+            </button>
+          ))
+        }
+      </div>
+    </main>
   </body>
 </html>
